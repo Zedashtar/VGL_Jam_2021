@@ -588,13 +588,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90afa01825c5615499997a9736e8ce24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonCheck: 1
+  buttonCheck: 0
   started: 0
   level: {fileID: 845747551}
   player: {fileID: 0}
+  dashTime: 0
   speed: 8
   jumpForce: 5
-  dashForce: 3
+  dashForce: 0
+  dashCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.008164073
+      outSlope: 0.008164073
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.13159046
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -2.9724076
+      outSlope: -2.9724076
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.054142594
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   dashDuration: 0.2
 --- !u!4 &1472571136
 Transform:
