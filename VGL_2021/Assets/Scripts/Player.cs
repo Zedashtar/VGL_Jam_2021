@@ -4,36 +4,40 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    [Space]
+    [Header("Sprites")]
     public Sprite[] mainSprite;
     public Sprite[] jumpSprite;
     public Sprite[] dashSprite;
     public Sprite[] slideSprite;
 
-    public SpriteRenderer sr;
-    public BoxCollider2D bc;
+    [Space]
+    [Header("Component")]
+    [HideInInspector] public SpriteRenderer sr;
+    [HideInInspector] public BoxCollider2D boxCol;
+    [HideInInspector] public Rigidbody2D rb;
 
+    public BoxCollider2D crashCheck;
+    public BoxCollider2D roofCheck;
+
+
+    [Space]
+    [Header("Other")]
     public bool isGrounded;
+    public bool isRoofed;
 
 
-    [HideInInspector]
-    public Rigidbody2D rb;
+    
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
-        bc = GetComponent<BoxCollider2D>();
+        boxCol = GetComponent<BoxCollider2D>();
+        
     }
 
-    //private void Update()
-    //{
-    //    if (GameController.g.isJump && isGrounded)
-    //    {
-    //        rb.AddForce(Vector2.up * GameController.g.jumpForce, ForceMode2D.Impulse);
-    //    }
-    //}
 
 
 

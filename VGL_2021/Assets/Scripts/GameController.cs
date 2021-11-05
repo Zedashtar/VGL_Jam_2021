@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
     public bool isSlide => Input.GetAxisRaw("Vertical") < -0.8f ? true : false;
     public bool isJump => Input.GetButtonDown("Jump");
     public bool isDash => Input.GetButtonDown("Dash");
-    bool isCrouching;
+    public bool isCrouching;
     bool isDashing;
     float dashStartTime;
     float dashTime;
@@ -106,7 +106,7 @@ public class GameController : MonoBehaviour
             
         }
 
-        if (isSlide && player.isGrounded)
+        if ((isSlide || player.isRoofed) && player.isGrounded)
         {
             isCrouching = true;
         }
@@ -121,21 +121,35 @@ public class GameController : MonoBehaviour
         if (isCrouching)
         {
             player.sr.sprite = player.slideSprite[0];
-            player.bc.size = new Vector2(1, 0.7f);
-            player.bc.offset = new Vector2(0, -0.15f);
+            player.boxCol.size = new Vector2(1, 0.7f);
+            player.boxCol.offset = new Vector2(0, -0.15f);
+            player.crashCheck.size = new Vector2(0.85f, 0.5f);
+            player.crashCheck.offset = new Vector2(0, -0.15f);
+            player.roofCheck.offset = new Vector2(0, -0.3f);
+
         }
         else
         {
             player.sr.sprite = player.mainSprite[0];
-            player.bc.size = new Vector2(1, 1);
-            player.bc.offset = new Vector2(0, 0);
+            player.boxCol.size = new Vector2(1, 1);
+            player.boxCol.offset = new Vector2(0, 0);
+            player.crashCheck.size = new Vector2(0.85f, 0.8f);
+            player.crashCheck.offset = new Vector2(0, 0);
+            player.roofCheck.offset = new Vector2(0, 0);
+
         }
     }
 
     void CancelDash()
     {
-        player.rb.gravityScale = 1f;
+        player.rb.gravityScale = 2f;
         isDashing = false;
         dashTime = 0f;
+    }
+
+    public void GameOver()
+    {
+        running = false;
+        Debug.Log("Game Over");
     }
 }
