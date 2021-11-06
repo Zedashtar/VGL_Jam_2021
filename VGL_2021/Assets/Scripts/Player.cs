@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
 
     public BoxCollider2D crashCheck;
     public BoxCollider2D roofCheck;
+    public BoxCollider2D destroyCheck;
 
 
     [Space]

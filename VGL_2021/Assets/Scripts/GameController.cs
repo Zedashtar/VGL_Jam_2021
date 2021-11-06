@@ -103,6 +103,7 @@ public class GameController : MonoBehaviour
             {
                 dashStartTime = Time.time;
                 isDashing = true;
+                player.destroyCheck.enabled = true;
             }
             
             Invoke("CancelDash", dashDuration);
@@ -148,6 +149,7 @@ public class GameController : MonoBehaviour
         player.rb.gravityScale = 2f;
         isDashing = false;
         dashTime = 0f;
+        player.destroyCheck.enabled = true;
     }
 
     public void GameOver()
