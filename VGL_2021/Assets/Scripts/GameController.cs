@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     public bool running;
     public GameObject level;
     public Player player;
+    AudioSource bgm;
     
     //Input Detection
     public bool isSlide => Input.GetAxisRaw("Vertical") < -0.8f ? true : false;
@@ -43,6 +44,7 @@ public class GameController : MonoBehaviour
     {
         g = this;
         player = FindObjectOfType<Player>();
+        bgm = GetComponent<AudioSource>();
     }
 
 
@@ -83,6 +85,7 @@ public class GameController : MonoBehaviour
     void StartLevel()
     {
         running = true;
+        bgm.Play();
     }
 
     void DetectInput()
